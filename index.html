@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Imersão CredTech · Inscrição ativa</title>
+<link rel="canonical" href="https://imersao.yntelli.com.br/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+<!-- ════════════════════════════════════════════════════════════
+     ❶ EDITE AQUI — É O ÚNICO LUGAR QUE VOCÊ PRECISA MEXER
+     ════════════════════════════════════════════════════════════ -->
+<script>
+const CONFIG = {
+  // Data/hora que a oferta encerra (fuso de Brasília -03:00).
+  // Formato: ANO-MÊS-DIAThora:min:seg-03:00
+  fimDaOferta:   "2026-06-26T23:59:59-03:00",   // = meia-noite de domingo (final da imers�o)
+
+  // Datas e local da imersão (confirme o mês!)
+  datas:         "25 · 26",
+  mesAno:        "Junho 2026",
+  local:         "Santos · SP",
+
+  // Oferta (troque pelos seus valores reais)
+  precoDe:       "",
+  precoPor:      "R$ 1.497,00",
+  parcelas:      "à vista",
+
+  // Link do botão: cole o checkout/pagamento OU um link de WhatsApp
+  // Ex WhatsApp: https://wa.me/55SEUNUMERO?text=Quero%20garantir%20minha%20vaga
+  linkCheckout:  "https://www.mercadopago.com.br/checkout/v1/redirect?preference_id=SEU_PREFERENCE_ID",
+};
+</script>
+<!-- ════════════════════════════════════════════════════════════ -->
+
+<style>
+:root{
+  --bg:#0A0A0B; --bg2:#0E0E10; --ink:#F2F2F0; --ink2:#C7C7C2; --ink3:#8A8A86;
+  --lime:#D6FF3F; --line:rgba(255,255,255,.09); --card:#121214;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--ink);font-family:'Plus Jakarta Sans',sans-serif;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;}
+.mono{font-family:'JetBrains Mono',monospace;}
+.lime{color:var(--lime);}
+.wrap{max-width:1080px;margin:0 auto;padding:0 28px;}
+
+/* grão */
+body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.045;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
+
+/* barra urgência sticky */
+.urg{position:sticky;top:0;z-index:50;background:var(--lime);color:#0A0A0B;
+  font-family:'JetBrains Mono';font-weight:700;font-size:13px;letter-spacing:.12em;
+  text-transform:uppercase;text-align:center;padding:11px 16px;display:flex;
+  justify-content:center;gap:14px;align-items:center;flex-wrap:wrap;}
+.urg .mini{background:#0A0A0B;color:var(--lime);padding:3px 9px;border-radius:3px;}
+
+section{position:relative;z-index:1;}
+
+/* HERO */
+.hero{padding:74px 0 64px;text-align:center;position:relative;}
+.hero::after{content:"";position:absolute;width:720px;height:720px;border-radius:50%;
+  top:-280px;left:50%;transform:translateX(-50%);
+  background:radial-gradient(circle,rgba(214,255,63,.13),transparent 60%);z-index:-1;}
+.kick{font-family:'JetBrains Mono';font-size:14px;letter-spacing:.34em;color:var(--lime);
+  text-transform:uppercase;margin-bottom:22px;}
+h1{font-family:'Syne';font-weight:800;font-size:clamp(54px,11vw,116px);line-height:.92;
+  letter-spacing:-.035em;}
+.hero .sub{font-weight:300;font-size:clamp(18px,2.6vw,24px);color:var(--ink2);
+  max-width:620px;margin:26px auto 0;line-height:1.5;}
+.hero .sub b{font-weight:600;color:#fff;}
+.meta{display:inline-flex;gap:0;align-items:center;margin-top:34px;
+  border:1px solid var(--line);border-radius:6px;overflow:hidden;}
+.meta div{padding:14px 22px;font-family:'JetBrains Mono';font-size:15px;letter-spacing:.06em;}
+.meta div+div{border-left:1px solid var(--line);}
+.meta .d{color:var(--lime);font-weight:700;}
+
+/* countdown */
+.cd{display:flex;justify-content:center;gap:14px;margin:48px 0 14px;flex-wrap:wrap;}
+.cd .u{background:var(--card);border:1px solid var(--line);border-radius:10px;
+  min-width:112px;padding:20px 10px;}
+.cd .num{font-family:'Syne';font-weight:800;font-size:clamp(40px,7vw,62px);line-height:1;
+  color:#fff;font-variant-numeric:tabular-nums;}
+.cd .lab{font-family:'JetBrains Mono';font-size:11px;letter-spacing:.2em;color:var(--ink3);
+  text-transform:uppercase;margin-top:10px;}
+.cd-note{font-family:'JetBrains Mono';font-size:13px;color:var(--ink3);letter-spacing:.06em;
+  text-transform:uppercase;}
+
+/* CTA */
+.cta{display:inline-block;background:var(--lime);color:#0A0A0B;font-family:'Syne';
+  font-weight:800;font-size:21px;padding:20px 46px;border-radius:8px;text-decoration:none;
+  letter-spacing:-.01em;margin-top:30px;transition:transform .18s,box-shadow .18s;
+  box-shadow:0 0 0 rgba(214,255,63,0);}
+.cta:hover{transform:translateY(-3px);box-shadow:0 14px 40px rgba(214,255,63,.28);}
+.cta.ghost{background:transparent;color:var(--lime);border:1px solid var(--lime);}
+.cta.ghost:hover{background:var(--lime);color:#0A0A0B;}
+.scarcity{font-family:'JetBrains Mono';font-size:13px;color:var(--ink3);margin-top:18px;
+  letter-spacing:.08em;text-transform:uppercase;}
+.scarcity b{color:var(--lime);}
+
+/* blocos */
+.band{border-top:1px solid var(--line);padding:84px 0;}
+.eyebrow{font-family:'JetBrains Mono';font-size:13px;letter-spacing:.28em;color:var(--lime);
+  text-transform:uppercase;margin-bottom:18px;}
+h2{font-family:'Syne';font-weight:700;font-size:clamp(34px,5.5vw,56px);line-height:1;
+  letter-spacing:-.03em;}
+.lead{font-weight:300;font-size:clamp(19px,2.5vw,26px);color:var(--ink2);line-height:1.5;
+  max-width:760px;margin-top:24px;}
+.lead b{font-weight:600;color:#fff;}
+
+/* pilares */
+.pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:48px;}
+.pcard{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:30px 26px;
+  transition:border-color .25s,transform .25s;}
+.pcard:hover{border-color:rgba(214,255,63,.4);transform:translateY(-4px);}
+.pcard .n{font-family:'JetBrains Mono';font-weight:700;color:var(--lime);font-size:15px;}
+.pcard h3{font-family:'Syne';font-weight:700;font-size:24px;margin:16px 0 10px;line-height:1.1;}
+.pcard p{font-weight:300;color:var(--ink2);font-size:16px;line-height:1.55;}
+
+/* lista leva */
+.takeaways{list-style:none;margin-top:40px;display:grid;grid-template-columns:1fr 1fr;gap:18px 40px;}
+.takeaways li{display:flex;gap:14px;align-items:flex-start;font-size:18px;color:var(--ink);
+  line-height:1.4;font-weight:400;}
+.takeaways .ck{color:var(--lime);font-weight:700;font-family:'JetBrains Mono';flex-shrink:0;margin-top:2px;}
+
+/* oferta */
+.offer{background:linear-gradient(160deg,#121214,#0c0c0e);border:1px solid rgba(214,255,63,.25);
+  border-radius:18px;padding:54px 44px;text-align:center;margin-top:40px;position:relative;overflow:hidden;}
+.offer::before{content:"";position:absolute;width:480px;height:480px;border-radius:50%;
+  top:-260px;right:-180px;background:radial-gradient(circle,rgba(214,255,63,.12),transparent 60%);}
+.offer .tag{font-family:'JetBrains Mono';font-size:13px;letter-spacing:.2em;color:var(--lime);
+  text-transform:uppercase;}
+.priceDe{font-family:'JetBrains Mono';font-size:20px;color:var(--ink3);text-decoration:line-through;
+  margin-top:22px;}
+.pricePor{font-family:'Syne';font-weight:800;font-size:clamp(56px,10vw,92px);line-height:1;
+  margin-top:6px;}
+.parc{font-weight:400;color:var(--ink2);font-size:18px;margin-top:10px;}
+
+/* faq */
+.faq{margin-top:40px;}
+.qa{border-top:1px solid var(--line);padding:26px 0;}
+.qa:last-child{border-bottom:1px solid var(--line);}
+.qa h4{font-family:'Syne';font-weight:600;font-size:21px;margin-bottom:10px;}
+.qa p{font-weight:300;color:var(--ink2);font-size:17px;line-height:1.55;}
+
+/* footer */
+footer{border-top:1px solid var(--line);padding:48px 0;text-align:center;}
+footer .mono{font-size:13px;letter-spacing:.2em;color:var(--ink3);text-transform:uppercase;line-height:2;}
+footer .mono b{color:var(--lime);}
+
+/* encerrado */
+.ended .cd,.ended .cta:not(.ghost){display:none;}
+#endedMsg{display:none;}
+.ended #endedMsg{display:block;font-family:'Syne';font-weight:700;font-size:26px;
+  color:var(--lime);margin:30px 0;}
+
+/* reveal (só esconde se JS ativo — fallback: sem JS aparece tudo) */
+.js .rv{opacity:0;transform:translateY(26px);transition:opacity .7s,transform .7s;}
+.js .rv.in{opacity:1;transform:none;}
+
+@media(max-width:760px){
+  .pillars{grid-template-columns:1fr;}
+  .takeaways{grid-template-columns:1fr;}
+  .meta{flex-direction:column;width:100%;}
+  .meta div+div{border-left:none;border-top:1px solid var(--line);}
+  .cd .u{min-width:72px;flex:1;}
+  .offer{padding:40px 24px;}
+}
+</style>
+<meta property="og:url" content="https://imersao.yntelli.com.br/">
+</head>
+<body>
+
+<div class="urg">
+  <span>Evento Particular</span>
+  <span class="mini" id="miniCd">--:--:--</span>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="topo">
+  <div class="wrap">
+    <div class="kick rv">Imersão presencial · 2 dias · mão na massa</div>
+    <h1 class="rv">IMERSÃO<br><span class="lime">CREDTECH</span></h1>
+    <p class="sub rv">Você não vai assistir — vai <b>construir</b>. Dois dias colocando as automações dos seus projetos no ar, lado a lado.</p>
+
+    <div class="meta rv">
+      <div class="d" id="mDatas">25 · 26</div>
+      <div id="mMes">Junho 2026</div>
+      <div id="mLocal">Santos · SP</div>
+    </div>
+
+    <div class="cd rv" id="countdown">
+      <div class="u"><div class="num" id="dd">00</div><div class="lab">dias</div></div>
+      <div class="u"><div class="num" id="hh">00</div><div class="lab">horas</div></div>
+      <div class="u"><div class="num" id="mm">00</div><div class="lab">min</div></div>
+      <div class="u"><div class="num" id="ss">00</div><div class="lab">seg</div></div>
+    </div>
+    <div class="cd-note rv">para garantir a condição de inscrição</div>
+
+    <div id="endedMsg">A inscrição foi encerrada — entre na lista de espera</div>
+
+    <div class="rv">
+      <a class="cta" id="ctaHero" href="https://www.mercadopago.com.br/checkout/v1/redirect?preference_id=SEU_PREFERENCE_ID">Garantir minha vaga</a>
+    </div>  </div>
+</section>
+
+<!-- PROMESSA -->
+<section class="band">
+  <div class="wrap">
+    <div class="eyebrow rv">Por que essa imersão é diferente</div>
+    <h2 class="rv">Ninguém sai com<br>anotações. Sai com a<br><span class="lime">automação rodando.</span></h2>
+    <p class="lead rv">Esqueça palestra e slide. São 2 dias com você implementando, ao vivo, as automações do seu próprio negócio de consignado — com ajuda na tela, lado a lado. <b>Quando acabar, está no ar.</b></p>
+  </div>
+</section>
+
+<!-- PILARES -->
+<section class="band">
+  <div class="wrap">
+    <div class="eyebrow rv">O que acontece nos 2 dias</div>
+    <div class="pillars">
+      <div class="pcard rv"><div class="n">01</div><h3>Automações na prática</h3><p>Você implementa as suas, na tela, com acompanhamento. Sai com tudo funcionando.</p></div>
+      <div class="pcard rv"><div class="n">02</div><h3>Troca entre operadores</h3><p>Bastidores, casos reais e estratégia de quem está na linha de frente do consignado.</p></div>
+      <div class="pcard rv"><div class="n">03</div><h3>Investimento em projetos</h3><p>Os melhores projetos saem da imersão com capital para escalar. Traga o seu.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- O QUE LEVA -->
+<section class="band">
+  <div class="wrap">
+    <div class="eyebrow rv">O que você leva pra casa</div>
+    <h2 class="rv">Sai pronto pra<br>operar no dia seguinte</h2>
+    <ul class="takeaways">
+      <li class="rv"><span class="ck">→</span> Pelo menos uma automação sua no ar, validada</li>
+      <li class="rv"><span class="ck">→</span> Acesso direto à mentoria durante os 2 dias</li>
+      <li class="rv"><span class="ck">→</span> Network com operadores e correspondentes do setor</li>
+      <li class="rv"><span class="ck">→</span> Chance de receber investimento no seu projeto</li>
+      <li class="rv"><span class="ck">→</span> Método CredTech aplicado ao seu caso real</li>
+      <li class="rv"><span class="ck">→</span> Material e gravações de apoio pós-evento</li>
+    </ul>
+  </div>
+</section>
+
+<!-- OFERTA -->
+<section class="band" id="oferta">
+  <div class="wrap">
+        <div class="offer rv">
+      <div class="tag">Lote atual (próximos lotes sob atualização)</div>
+      <div class="priceDe" id="oDe"></div>
+      <div class="pricePor"><span class="lime" id="oPor">R$ 1.497,00</span></div>
+      <div class="parc" id="oParc">à vista</div>
+
+      <div class="cd" id="countdown2" style="margin:36px 0 8px;">
+        <div class="u"><div class="num" id="dd2">00</div><div class="lab">dias</div></div>
+        <div class="u"><div class="num" id="hh2">00</div><div class="lab">horas</div></div>
+        <div class="u"><div class="num" id="mm2">00</div><div class="lab">min</div></div>
+        <div class="u"><div class="num" id="ss2">00</div><div class="lab">seg</div></div>
+      </div>
+
+      <div><a class="cta" id="ctaOferta" href="https://www.mercadopago.com.br/checkout/v1/redirect?preference_id=SEU_PREFERENCE_ID" style="margin-top:24px;">Quero minha vaga agora</a></div>
+      <div class="scarcity">Lote atual ativo · próximos lotes com ajuste de valor progressivo · presencial em Santos</div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="band">
+  <div class="wrap">
+    <div class="eyebrow rv">Perguntas rápidas</div>
+    <div class="faq">
+      <div class="qa rv"><h4>Preciso saber programar?</h4><p>Não. A imersão é feita pra quem opera consignado, não pra dev. Você monta as automações com acompanhamento na tela.</p></div>
+      <div class="qa rv"><h4>O que está incluso?</h4><p>Os 2 dias completos de imersão, mentoria ao vivo, material e gravações de apoio. <em>[ajuste: confirme se inclui almoço/coffee]</em></p></div>
+      <div class="qa rv"><h4>Como funciona o investimento em projetos?</h4><p>Durante a imersão os projetos são apresentados, e os de maior potencial podem receber aporte para escalar.</p></div>
+      <div class="qa rv"><h4>Posso parcelar?</h4><p>Sim — a condição de inscrição permite parcelamento, válido apenas até o horário definido na oferta.</p></div>
+    </div>
+    <div class="rv" style="margin-top:46px;text-align:center;">
+      <a class="cta ghost" href="#oferta">Garantir agora</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="mono">Método <b>CredTech</b> · by Yasmin Melo<br>Yntelli — Tecnologia & IA pro consignado</div>
+  </div>
+</footer>
+
+<script>
+document.documentElement.className += ' js';
+// aplica config no DOM
+document.getElementById('mDatas').textContent = CONFIG.datas;
+document.getElementById('mMes').textContent   = CONFIG.mesAno;
+document.getElementById('mLocal').textContent = CONFIG.local;
+document.getElementById('oDe').textContent    = CONFIG.precoDe;
+document.getElementById('oPor').textContent   = CONFIG.precoPor;
+document.getElementById('oParc').textContent  = CONFIG.parcelas;
+document.getElementById('ctaHero').href   = CONFIG.linkCheckout;
+document.getElementById('ctaOferta').href = CONFIG.linkCheckout;
+
+// countdown
+const alvo = new Date(CONFIG.fimDaOferta).getTime();
+const pad = n => String(n).padStart(2,'0');
+function tick(){
+  const diff = alvo - Date.now();
+  if(diff <= 0){
+    document.body.classList.add('ended');
+    document.getElementById('miniCd').textContent = "ENCERRADA";
+    clearInterval(timer);
+    return;
+  }
+  const d = Math.floor(diff/86400000);
+  const h = Math.floor(diff%86400000/3600000);
+  const m = Math.floor(diff%3600000/60000);
+  const s = Math.floor(diff%60000/1000);
+  ['dd','dd2'].forEach(i=>document.getElementById(i).textContent=pad(d));
+  ['hh','hh2'].forEach(i=>document.getElementById(i).textContent=pad(h));
+  ['mm','mm2'].forEach(i=>document.getElementById(i).textContent=pad(m));
+  ['ss','ss2'].forEach(i=>document.getElementById(i).textContent=pad(s));
+  document.getElementById('miniCd').textContent = `${pad(h)}:${pad(m)}:${pad(s)}`;
+}
+tick(); const timer = setInterval(tick,1000);
+
+// reveal no scroll
+if(!('IntersectionObserver' in window)){
+  document.querySelectorAll('.rv').forEach(el=>el.classList.add('in'));
+} else {
+const io = new IntersectionObserver((es)=>{
+  es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+},{threshold:.12});
+document.querySelectorAll('.rv').forEach((el,i)=>{
+  el.style.transitionDelay = (i%6*0.06)+'s';
+  io.observe(el);
+});
+}
+</script>
+</body>
+</html>
