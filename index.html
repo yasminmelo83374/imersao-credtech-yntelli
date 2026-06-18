@@ -30,7 +30,7 @@ const CONFIG = {
 
   // Link do botão: cole o checkout/pagamento OU um link de WhatsApp
   // Ex WhatsApp: https://wa.me/55SEUNUMERO?text=Quero%20garantir%20minha%20vaga
-  linkCheckout:  "https://mpago.la/1SgRkHf",
+  linkCheckout:  "https://mpago.li/1fp8Pn9",
 };
 </script>
 <!-- ════════════════════════════════════════════════════════════ -->
@@ -98,6 +98,16 @@ h1{font-family:'Syne';font-weight:800;font-size:clamp(54px,11vw,116px);line-heig
 .cta:hover{transform:translateY(-3px);box-shadow:0 14px 40px rgba(214,255,63,.28);}
 .cta.ghost{background:transparent;color:var(--lime);border:1px solid var(--lime);}
 .cta.ghost:hover{background:var(--lime);color:#0A0A0B;}
+.lead-form{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin:32px auto 0;
+  max-width:820px;text-align:left;}
+.lead-form label{display:block;font-family:'JetBrains Mono';font-size:10px;letter-spacing:.18em;
+  color:var(--ink3);text-transform:uppercase;margin-bottom:7px;}
+.lead-form input{width:100%;background:#09090a;border:1px solid var(--line);border-radius:8px;
+  color:var(--ink);font-family:'Plus Jakarta Sans';font-size:15px;padding:15px 14px;outline:none;}
+.lead-form input:focus{border-color:rgba(214,255,63,.75);box-shadow:0 0 0 3px rgba(214,255,63,.1);}
+.lead-alert{display:none;margin:14px auto 0;max-width:760px;color:var(--lime);
+  font-family:'JetBrains Mono';font-size:12px;letter-spacing:.04em;text-transform:uppercase;}
+.lead-alert.show{display:block;}
 .scarcity{font-family:'JetBrains Mono';font-size:13px;color:var(--ink3);margin-top:18px;
   letter-spacing:.08em;text-transform:uppercase;}
 .scarcity b{color:var(--lime);}
@@ -169,6 +179,7 @@ footer .mono b{color:var(--lime);}
   .meta div+div{border-left:none;border-top:1px solid var(--line);}
   .cd .u{min-width:72px;flex:1;}
   .offer{padding:40px 24px;}
+  .lead-form{grid-template-columns:1fr;}
 }
 </style>
 <meta property="og:url" content="https://imersao.yntelli.com.br/">
@@ -204,7 +215,7 @@ footer .mono b{color:var(--lime);}
     <div id="endedMsg">A inscrição foi encerrada — entre na lista de espera</div>
 
     <div class="rv">
-      <a class="cta" id="ctaHero" href="https://mpago.la/1SgRkHf">Garantir minha vaga</a>
+      <a class="cta" id="ctaHero" href="https://mpago.li/1fp8Pn9">Garantir minha vaga</a>
     </div>  </div>
 </section>
 
@@ -261,7 +272,23 @@ footer .mono b{color:var(--lime);}
         <div class="u"><div class="num" id="ss2">00</div><div class="lab">seg</div></div>
       </div>
 
-      <div><a class="cta" id="ctaOferta" href="https://mpago.la/1SgRkHf" style="margin-top:24px;">Quero minha vaga agora</a></div>
+            <form class="lead-form" id="leadForm">
+        <div>
+          <label for="leadNome">Nome</label>
+          <input id="leadNome" name="nome" type="text" autocomplete="name" required placeholder="Seu nome">
+        </div>
+        <div>
+          <label for="leadEmail">E-mail</label>
+          <input id="leadEmail" name="email" type="email" autocomplete="email" required placeholder="seu@email.com">
+        </div>
+        <div>
+          <label for="leadTelefone">Telefone</label>
+          <input id="leadTelefone" name="telefone" type="tel" autocomplete="tel" required placeholder="(00) 00000-0000">
+        </div>
+      </form>
+      <div class="lead-alert" id="leadAlert">Preencha nome, e-mail e telefone para continuar.</div>
+      <div><a class="cta" id="ctaOferta" href="https://mpago.li/1fp8Pn9" style="margin-top:24px;">Quero minha vaga agora</a></div>
+
       <div class="scarcity">Lote atual ativo · próximos lotes com ajuste de valor progressivo · presencial em Santos</div>
     </div>
   </div>
@@ -300,6 +327,38 @@ document.getElementById('oPor').textContent   = CONFIG.precoPor;
 document.getElementById('oParc').textContent  = CONFIG.parcelas;
 document.getElementById('ctaHero').href   = CONFIG.linkCheckout;
 document.getElementById('ctaOferta').href = CONFIG.linkCheckout;
+
+function getLeadData(){
+  return {
+    nome: document.getElementById('leadNome')?.value.trim() || '',
+    email: document.getElementById('leadEmail')?.value.trim() || '',
+    telefone: document.getElementById('leadTelefone')?.value.trim() || ''
+  };
+}
+
+function leadOk(lead){
+  return lead.nome.length >= 3 && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(lead.email) && lead.telefone.replace(/\D/g,'').length >= 10;
+}
+
+function goCheckout(e){
+  const lead = getLeadData();
+  if(!leadOk(lead)){
+    e.preventDefault();
+    document.getElementById('leadAlert')?.classList.add('show');
+    document.getElementById('oferta')?.scrollIntoView({behavior:'smooth', block:'center'});
+    return;
+  }
+  try{
+    localStorage.setItem('imersaoCredtechLead', JSON.stringify({...lead, createdAt: new Date().toISOString()}));
+  }catch(err){}
+}
+
+document.getElementById('ctaOferta')?.addEventListener('click', goCheckout);
+document.getElementById('ctaHero')?.addEventListener('click', (e)=>{
+  e.preventDefault();
+  document.getElementById('oferta')?.scrollIntoView({behavior:'smooth'});
+  setTimeout(()=>document.getElementById('leadNome')?.focus(), 450);
+});
 
 // countdown
 const alvo = new Date(CONFIG.fimDaOferta).getTime();
