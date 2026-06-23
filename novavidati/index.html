@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Nova Vida TI × CredTech — Parceria</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Newsreader:ital,opsz@1,18..72&display=swap" rel="stylesheet">
+<style>
+:root{
+  --void:#030305;--base:#06060a;--surface:#0b0b11;--raised:#101017;
+  --line:rgba(255,255,255,.055);--line2:rgba(255,255,255,.10);
+  --ink:#f4f5ef;--ink2:#c4c4cc;--mute:#83838f;--faint:#52525f;
+  --lime:#D6FF3F;--orb1:#eaff9a;--orb2:#9fd92a;
+  --pad:clamp(20px,5vw,40px);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{background:var(--void);color:var(--ink);font-family:'Syne',sans-serif;-webkit-font-smoothing:antialiased;line-height:1.5;overflow-x:hidden}
+a,button{touch-action:manipulation}
+img,svg{max-width:100%}
+
+/* ambient — restrained, premium */
+.bgfx{position:fixed;inset:0;z-index:0;pointer-events:none}
+.bgfx .glow{position:absolute;inset:0;
+  background:radial-gradient(circle at 50% -8%,rgba(214,255,63,.06),transparent 40%),
+             linear-gradient(180deg,transparent 55%,rgba(0,0,0,.5))}
+.bgfx .grain{position:absolute;inset:0;opacity:.022;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.bgfx svg{position:absolute;inset:0;width:100%;height:100%;opacity:.3}
+
+.wrap{position:relative;z-index:2;max-width:760px;margin:0 auto;padding:clamp(36px,7vw,54px) var(--pad) 90px}
+
+/* atoms */
+.o{width:22px;height:22px;border-radius:50%;background:radial-gradient(circle at 40% 35%,var(--orb1),var(--orb2));box-shadow:0 0 22px rgba(214,255,63,.7),0 0 52px rgba(214,255,63,.2);animation:breathe 5s ease-in-out infinite;flex-shrink:0}
+@keyframes breathe{0%,100%{transform:scale(1);box-shadow:0 0 22px rgba(214,255,63,.7),0 0 52px rgba(214,255,63,.2)}50%{transform:scale(1.07);box-shadow:0 0 34px rgba(214,255,63,.85),0 0 84px rgba(214,255,63,.3)}}
+.pulse{width:7px;height:7px;border-radius:50%;background:var(--lime);box-shadow:0 0 9px var(--lime);animation:pp 1.8s ease-in-out infinite;flex-shrink:0}
+@keyframes pp{0%,100%{opacity:.35;transform:scale(.85)}50%{opacity:1;transform:scale(1)}}
+@media(prefers-reduced-motion:reduce){.o,.pulse{animation:none}}
+.lbl{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--faint)}
+.k{color:var(--lime)}
+.statement{font-family:'Newsreader',serif;font-style:italic;font-size:clamp(17px,2.4vw,21px);line-height:1.5;color:var(--ink);border-left:2px solid var(--lime);padding:4px 0 4px 18px}
+.statement .k{font-style:normal;font-family:'Syne';font-weight:700;color:var(--lime)}
+
+/* brand bar */
+.brand-bar{display:flex;align-items:center;gap:11px}
+.brand-bar .wm{font-weight:800;font-size:16px;letter-spacing:.01em}
+.brand-bar .wm small{display:block;font-size:7.5px;letter-spacing:.44em;color:var(--mute);margin-bottom:-2px;font-weight:500}
+
+/* hero */
+.hero{margin-top:clamp(44px,9vw,62px);padding-bottom:clamp(36px,7vw,50px);border-bottom:.5px solid var(--line)}
+.eyebrow{display:flex;align-items:center;gap:9px;margin-bottom:clamp(18px,4vw,24px);font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--mute);flex-wrap:wrap}
+.hero h1{font-family:'Syne';font-weight:800;font-size:clamp(33px,7.4vw,62px);letter-spacing:-.035em;line-height:.98;margin-bottom:clamp(20px,4vw,26px)}
+.hero h1 .k{color:var(--lime)}
+.hero .sub{font-size:clamp(15px,2.3vw,17px);color:var(--ink2);max-width:48ch;line-height:1.6}
+.hero .stmt-wrap{margin-top:clamp(22px,4.5vw,28px)}
+
+/* stats */
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:.5px solid var(--line);border-radius:14px;overflow:hidden;margin-top:clamp(34px,6vw,44px)}
+.stat{background:linear-gradient(180deg,#0c0c13,#070709);padding:clamp(18px,4vw,24px) clamp(14px,3vw,20px);position:relative}
+.stat::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.07),transparent)}
+.stat .val{font-size:clamp(28px,5.5vw,42px);font-weight:800;letter-spacing:-.035em;line-height:1;color:var(--lime)}
+.stat .lbl{margin-top:7px;line-height:1.5}
+@media(max-width:520px){.stats{grid-template-columns:1fr}.stat{display:flex;align-items:baseline;gap:14px}.stat .val{min-width:90px}.stat .lbl{margin-top:0}}
+
+/* section */
+.sec{margin-top:clamp(46px,8vw,62px)}
+.sec-head{display:flex;align-items:center;gap:13px;margin-bottom:clamp(20px,4vw,28px)}
+.sec-head .num{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--lime);flex-shrink:0}
+.sec-head h2{font-family:'Syne';font-weight:700;font-size:clamp(21px,3.8vw,28px);letter-spacing:-.02em;line-height:1.1}
+.sec-head .ln{flex:1;height:.5px;background:var(--line);min-width:20px}
+
+/* automation flow — the "uau" */
+.flow{background:linear-gradient(165deg,#0b0b12,#060608);border:.5px solid var(--line2);border-radius:18px;padding:clamp(22px,5vw,32px);position:relative;overflow:hidden;box-shadow:0 24px 60px -32px rgba(0,0,0,.9),inset 0 1px 0 rgba(255,255,255,.03)}
+.flow .intro{font-size:clamp(14px,2.2vw,15px);color:var(--ink2);line-height:1.7;margin-bottom:26px;max-width:56ch}
+.flow .intro b{color:var(--ink);font-weight:600}
+.flow .intro .k{color:var(--lime);font-weight:600}
+.chain{display:flex;flex-direction:column;gap:0}
+.step{display:flex;gap:16px;align-items:flex-start;position:relative;padding-bottom:22px}
+.step:last-child{padding-bottom:0}
+.step .rail{display:flex;flex-direction:column;align-items:center;flex-shrink:0;align-self:stretch}
+.step .dot{width:32px;height:32px;border-radius:9px;background:var(--raised);border:.5px solid var(--line2);display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;color:var(--mute);flex-shrink:0;transition:.2s}
+.step.hot .dot{background:rgba(214,255,63,.12);border-color:rgba(214,255,63,.5);color:var(--lime);box-shadow:0 0 18px -4px rgba(214,255,63,.4)}
+.step .line{width:.5px;flex:1;background:linear-gradient(180deg,var(--line2),transparent);margin-top:4px;min-height:14px}
+.step:last-child .line{display:none}
+.step .body{padding-top:5px}
+.step .st{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);margin-bottom:3px}
+.step .sh{font-size:15px;font-weight:700;letter-spacing:-.01em;margin-bottom:3px}
+.step.hot .sh{color:var(--lime)}
+.step .sd{font-size:13px;color:var(--mute);line-height:1.5;max-width:50ch}
+.flow .punch{margin-top:26px;padding-top:22px;border-top:.5px solid var(--line)}
+
+/* cooperativa */
+.coop{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}
+@media(max-width:560px){.coop{grid-template-columns:1fr}}
+.coop .cell{background:var(--surface);border:.5px solid var(--line);border-radius:13px;padding:20px 19px;position:relative;overflow:hidden}
+.coop .cell::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(214,255,63,.18),transparent)}
+.coop .cell .ch{display:flex;align-items:center;gap:10px;margin-bottom:11px}
+.coop .cell .ci{width:30px;height:30px;border-radius:8px;background:rgba(214,255,63,.1);border:.5px solid rgba(214,255,63,.3);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0}
+.coop .cell .ct{font-size:14.5px;font-weight:700;letter-spacing:-.01em}
+.coop .cell p{font-size:13px;color:var(--mute);line-height:1.6}
+.coop .cell p .k{color:var(--lime);font-weight:600}
+
+/* cotas */
+.cotas{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:600px){.cotas{grid-template-columns:1fr}}
+.cota{border-radius:18px;position:relative;overflow:hidden}
+.cota-in{padding:clamp(22px,5vw,28px) clamp(20px,4.5vw,26px);height:100%;display:flex;flex-direction:column}
+.cota.apoio{background:linear-gradient(165deg,#0a0a10,#060608);border:.5px solid var(--line2);box-shadow:inset 0 1px 0 rgba(255,255,255,.03)}
+.cota.fundador{background:linear-gradient(165deg,#0f0f17,#060608);border:1px solid rgba(214,255,63,.32);box-shadow:0 0 60px -24px rgba(214,255,63,.3),0 24px 60px -34px #000,inset 0 1px 0 rgba(214,255,63,.14)}
+.cota.fundador::before{content:"";position:absolute;top:-60px;left:-40px;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,rgba(214,255,63,.10),transparent 62%);pointer-events:none}
+.clabel{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--mute);margin-bottom:14px}
+.badge{display:inline-block;width:fit-content;background:var(--lime);color:#0a0a06;font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;padding:4px 10px;border-radius:6px;margin-bottom:14px}
+.price{font-size:clamp(40px,8vw,50px);font-weight:800;letter-spacing:-.04em;line-height:1;margin-bottom:3px}
+.cota.apoio .price{color:var(--ink)}
+.cota.fundador .price{color:var(--lime)}
+.psub{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--faint);margin-bottom:20px}
+.cota h3{font-size:17px;font-weight:700;letter-spacing:-.01em;margin-bottom:8px;line-height:1.15}
+.tagline{font-family:'Newsreader',serif;font-style:italic;font-size:14px;color:var(--ink2);margin-bottom:20px;line-height:1.45}
+.cota.apoio .tagline{color:var(--mute)}
+.lock{background:rgba(214,255,63,.06);border:.5px solid rgba(214,255,63,.22);border-radius:10px;padding:13px 14px;margin-bottom:20px}
+.lock .lt{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:rgba(214,255,63,.55);margin-bottom:8px}
+.lv{display:flex;justify-content:space-between;align-items:baseline;font-family:'JetBrains Mono',monospace;font-size:12px;gap:10px}
+.lv .a{color:var(--mute)}.lv .b{color:var(--ink2);font-weight:600;white-space:nowrap}
+.lv+.lv{margin-top:6px;padding-top:6px;border-top:.5px solid rgba(255,255,255,.06)}
+.lv.total .a{color:var(--ink);font-weight:600}.lv.total .b{color:var(--lime);font-size:14px}
+.cli-list{display:flex;flex-direction:column;gap:9px;margin-bottom:auto;padding-bottom:24px}
+.cli{display:flex;align-items:flex-start;gap:9px;font-size:13px;color:var(--ink2);line-height:1.45}
+.cli .ck{flex-shrink:0;font-size:11px;margin-top:2px;color:var(--faint)}
+.cli.hi .ck{color:var(--lime)}.cli.hi{color:var(--ink);font-weight:600}
+.cta{display:block;text-align:center;font-family:'Syne';font-weight:700;font-size:15px;padding:15px 20px;border-radius:11px;text-decoration:none;transition:.18s;min-height:48px;overflow-wrap:anywhere}
+.cta.ghost{border:.5px solid var(--line2);color:var(--ink2)}
+.cta.ghost:active,.cta.ghost:hover{border-color:rgba(214,255,63,.4);color:var(--lime)}
+.cta.solid{background:var(--lime);color:#0a0a06;box-shadow:0 8px 30px -10px rgba(214,255,63,.4)}
+.cta.solid:active,.cta.solid:hover{opacity:.9;transform:translateY(-1px)}
+.cta-note{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--faint);text-align:center;margin-top:9px}
+
+/* urgency */
+.urgency{display:flex;align-items:center;gap:14px;margin-top:clamp(20px,4vw,26px);padding:16px 20px;background:rgba(214,255,63,.05);border:.5px solid rgba(214,255,63,.18);border-radius:12px}
+.urgency p{font-size:13.5px;color:var(--ink2);line-height:1.55}
+.urgency p b{color:var(--lime);font-weight:700}
+
+/* contact */
+.contact{background:linear-gradient(165deg,#0c0c13,#060608);border:.5px solid rgba(214,255,63,.18);border-radius:16px;padding:clamp(22px,5vw,28px);margin-top:14px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:18px}
+.contact .cl b{font-weight:800;font-size:19px;display:block;margin-bottom:3px;letter-spacing:-.01em}
+.contact .cl .role{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.06em;color:var(--lime)}
+.contact .cl small{display:block;font-size:12.5px;color:var(--mute);margin-top:6px}
+.contact .cta-c{background:var(--lime);color:#0a0a06;font-family:'Syne';font-weight:700;font-size:15px;padding:14px 26px;border-radius:11px;text-decoration:none;white-space:nowrap;transition:.18s;min-height:48px;display:flex;align-items:center}
+.contact .cta-c:active,.contact .cta-c:hover{opacity:.9;transform:translateY(-1px)}
+@media(max-width:480px){.contact{flex-direction:column;align-items:stretch;text-align:left}.contact .cta-c{justify-content:center}}
+@media(max-width:420px){.wrap{padding-left:18px;padding-right:18px}.lv{align-items:flex-start}.lv .b{white-space:normal;text-align:right}.cta,.contact .cta-c{width:100%}.hero h1{font-size:clamp(29px,10.5vw,36px);letter-spacing:-.015em}}
+
+.foot{margin-top:clamp(44px,8vw,56px);padding-top:20px;border-top:.5px solid var(--line);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.foot .fb{font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--faint)}
+.foot .fb .o-mini{display:inline-block;width:9px;height:9px;border-radius:50%;background:radial-gradient(circle at 40% 35%,var(--orb1),var(--orb2));box-shadow:0 0 8px rgba(214,255,63,.5);vertical-align:middle;margin-right:6px}
+</style>
+</head>
+<body>
+
+<div class="bgfx">
+  <div class="glow"></div>
+  <svg viewBox="0 0 760 1000" preserveAspectRatio="xMidYMid slice">
+    <g stroke-linecap="round">
+      <line x1="60" y1="160" x2="240" y2="280" stroke="rgba(214,255,63,.14)" stroke-dasharray="3 8"><animate attributeName="stroke-dashoffset" values="0;-22" dur="2.4s" repeatCount="indefinite"/></line>
+      <line x1="240" y1="280" x2="520" y2="200" stroke="rgba(214,255,63,.10)" stroke-dasharray="3 8"><animate attributeName="stroke-dashoffset" values="0;-22" dur="3s" repeatCount="indefinite"/></line>
+      <line x1="520" y1="200" x2="700" y2="320" stroke="rgba(255,255,255,.06)" stroke-dasharray="3 8"/>
+      <line x1="240" y1="280" x2="300" y2="520" stroke="rgba(214,255,63,.07)"/>
+      <line x1="520" y1="200" x2="580" y2="460" stroke="rgba(214,255,63,.09)" stroke-dasharray="3 8"><animate attributeName="stroke-dashoffset" values="0;-22" dur="3.4s" repeatCount="indefinite"/></line>
+    </g>
+    <g>
+      <circle cx="60" cy="160" r="3" fill="#D6FF3F" opacity=".55"><animate attributeName="opacity" values=".3;.9;.3" dur="3s" repeatCount="indefinite"/></circle>
+      <circle cx="240" cy="280" r="4.5" fill="#D6FF3F" opacity=".7"><animate attributeName="opacity" values=".5;1;.5" dur="2.4s" repeatCount="indefinite"/></circle>
+      <circle cx="520" cy="200" r="3.5" fill="#eaff9a" opacity=".55"/>
+      <circle cx="700" cy="320" r="2.6" fill="#fff" opacity=".3"/>
+      <circle cx="300" cy="520" r="3" fill="#D6FF3F" opacity=".5"/>
+      <circle cx="580" cy="460" r="3.5" fill="#D6FF3F" opacity=".6"><animate attributeName="opacity" values=".4;.9;.4" dur="2.8s" repeatCount="indefinite"/></circle>
+    </g>
+  </svg>
+</div>
+
+<div class="wrap">
+
+  <div class="brand-bar"><div class="o"></div><div class="wm"><small>YNTELLI</small>CredTech</div></div>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="eyebrow"><span class="pulse"></span>Proposta exclusiva · Nova Vida TI · Jun 2026</div>
+    <h1>O lead bom<br>não é o que chega.<br>É o que está<br><span class="k">enriquecido.</span></h1>
+    <p class="sub">Centenas de alunos enriquecendo em um só canal</p>
+    <div class="stmt-wrap"><p class="statement">A gente não está atrás de patrocínio. Está montando a <span class="k">infraestrutura de uma rede</span> — e tem um lugar nela que combina com vocês.</p></div>
+  </div>
+
+  <!-- STATS -->
+  <div class="stats">
+    <div class="stat"><div class="val">30</div><div class="lbl">corbans com operação<br>ativa no piloto</div></div>
+    <div class="stat"><div class="val">200+</div><div class="lbl">alunos na rede<br>em expansão</div></div>
+    <div class="stat"><div class="val">R$15k</div><div class="lbl">cota do próximo<br>evento · a partir de</div></div>
+  </div>
+
+  <!-- COMO A OPERAÇÃO RODA -->
+  <div class="sec">
+    <div class="sec-head"><span class="num">/01</span><h2>Como a operação roda</h2><span class="ln"></span></div>
+    <div class="flow">
+      <p class="intro">Cada CredTecher tem uma <b>mesa autônoma de crédito</b> rodando com IA. Não é venda manual — é uma esteira que capta, qualifica e digita sozinha. <span class="k">E ela só funciona se o lead for enriquecido no meio do caminho.</span></p>
+      <div class="chain">
+        <div class="step">
+          <div class="rail"><div class="dot">01</div><div class="line"></div></div>
+          <div class="body"><div class="st">captação</div><div class="sh">A IA capta o lead</div><div class="sd">Tráfego e prospecção automatizados trazem o contato — sem o corban garimpar.</div></div>
+        </div>
+        <div class="step hot">
+          <div class="rail"><div class="dot">02</div><div class="line"></div></div>
+          <div class="body"><div class="st">enriquecimento · onde a Nova Vida entra</div><div class="sh">O lead vira oportunidade</div><div class="sd">Margem, elegibilidade, dados bancários. Sem isso, a esteira trava aqui. É o elo que decide se a operação anda.</div></div>
+        </div>
+        <div class="step">
+          <div class="rail"><div class="dot">03</div><div class="line"></div></div>
+          <div class="body"><div class="st">simulação</div><div class="sh">A IA simula e oferta</div><div class="sd">Com o dado limpo, o Super Agente calcula e apresenta a melhor proposta na hora.</div></div>
+        </div>
+        <div class="step">
+          <div class="rail"><div class="dot">04</div></div>
+          <div class="body"><div class="st">contrato</div><div class="sh">A IA digita e fecha</div><div class="sd">Contrato preenchido e enviado no automático. O corban comanda, não executa.</div></div>
+        </div>
+      </div>
+      <div class="punch"><p class="statement">Multiplique isso por <span class="k">30 operações</span>, todo dia. O enriquecimento deixa de ser pedido avulso e vira <span class="k">fluxo contínuo</span>.</p></div>
+    </div>
+  </div>
+
+  <!-- A COOPERATIVA -->
+  <div class="sec">
+    <div class="sec-head"><span class="num">/02</span><h2>Por que isso é uma cooperativa</h2><span class="ln"></span></div>
+    <div class="coop">
+      <div class="cell"><div class="ch"><div class="ci">◈</div><div class="ct">Mesas que a gente monta</div></div><p>Cada corban opera uma mesa autônoma criada internamente. Não é aluno solto — é uma <span class="k">célula de produção</span> conectada à rede.</p></div>
+      <div class="cell"><div class="ch"><div class="ci">⟡</div><div class="ct">Demanda que se concentra</div></div><p>30 operações geram volume junto. Para o parceiro, isso é <span class="k">escala num contrato só</span> — não 30 negociações avulsas.</p></div>
+      <div class="cell"><div class="ch"><div class="ci">▸</div><div class="ct">Produção direcionada</div></div><p>A rede direciona as vendas para parceiros alinhados. Quem está dentro recebe o fluxo <span class="k">antes do mercado saber que existe.</span></p></div>
+      <div class="cell"><div class="ch"><div class="ci">◎</div><div class="ct">Crescimento previsível</div></div><p>200+ na fila de implantação. O volume de enriquecimento <span class="k">cresce conforme a rede escala</span> — e ela está escalando agora.</p></div>
+    </div>
+  </div>
+
+  <!-- COTAS -->
+  <div class="sec">
+    <div class="sec-head"><span class="num">/03</span><h2>Como entrar</h2><span class="ln"></span></div>
+    <div class="cotas">
+
+      <div class="cota apoio">
+        <div class="cota-in">
+          <div class="clabel">Cota de Apoio</div>
+          <div class="price">R$ 3k</div>
+          <div class="psub">investimento único · junho/26</div>
+          <h3>Presença na imersão.</h3>
+          <p class="tagline">Você entra na sala, ativa sua marca e começa o relacionamento com a rede.</p>
+          <div class="cli-list">
+            <div class="cli"><span class="ck">✓</span>Marca em todos os materiais do evento</div>
+            <div class="cli"><span class="ck">✓</span>30 min de ativação em sala (os 30 corbans)</div>
+            <div class="cli"><span class="ck">✓</span>Presença nos dois dias — 25 e 26 de junho</div>
+            <div class="cli"><span class="ck">✓</span>1 lugar de aluno-parceiro incluso</div>
+            <div class="cli"><span class="ck">✓</span>Acesso ao grupo da cooperativa (200+)</div>
+            <div class="cli"><span class="ck">✓</span>Menção no pós-evento nas redes</div>
+          </div>
+          <a href="#" class="cta ghost">Quero a cota de R$ 3k</a>
+        </div>
+      </div>
+
+      <div class="cota fundador">
+        <div class="cota-in">
+          <span class="badge">Recomendada</span>
+          <div class="price">R$ 5k</div>
+          <div class="psub">junho/26 + valor travado no próximo</div>
+          <h3>Presença agora.<br>Posição garantida.</h3>
+          <p class="tagline">O próximo evento começa em R$15k. Quem entra agora trava o acesso pelo valor de hoje.</p>
+          <div class="lock">
+            <div class="lt">o que você trava</div>
+            <div class="lv"><span class="a">Cota fundador · jun/26</span><span class="b">R$ 5.000</span></div>
+            <div class="lv"><span class="a">Próximo evento · equivalente</span><span class="b">R$ 15.000+</span></div>
+            <div class="lv total"><span class="a">Você paga agora</span><span class="b">R$ 5.000</span></div>
+          </div>
+          <div class="cli-list">
+            <div class="cli"><span class="ck">✓</span>Tudo da cota de apoio</div>
+            <div class="cli hi"><span class="ck">►</span>30 min de ativação nos dois dias</div>
+            <div class="cli hi"><span class="ck">►</span>1 aluno-parceiro participante</div>
+            <div class="cli hi"><span class="ck">►</span>Valor travado no próximo evento (R$15k+)</div>
+            <div class="cli hi"><span class="ck">►</span>Posição permanente de parceiro fundador</div>
+            <div class="cli hi"><span class="ck">►</span>Demanda da cooperativa direcionada com prioridade</div>
+          </div>
+          <a href="#" class="cta solid">Quero a cota de R$ 5k</a>
+          <div class="cta-note">vagas limitadas · decisão em 24h</div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="urgency">
+      <span class="pulse"></span>
+      <p>Imersão em <b>25 e 26 de junho, Santos.</b> Esta é a única edição com janela de entrada — o próximo evento começa em R$15k. A decisão é agora, ou depois do aumento.</p>
+    </div>
+  </div>
+
+  <!-- CONTATO -->
+  <div class="sec">
+    <div class="sec-head"><span class="num">/04</span><h2>Falar com a Luciana</h2><span class="ln"></span></div>
+    <div class="contact">
+      <div class="cl">
+        <b>Luciana Catão</b>
+        <span class="role">Parcerias · CredTech / Yntelli</span>
+        <small>Responda aqui ou chame direto no WhatsApp.</small>
+      </div>
+      <a href="https://wa.me/55" class="cta-c">Falar agora</a>
+    </div>
+  </div>
+
+  <div class="foot">
+    <div class="fb"><span class="o-mini"></span>Yntelli · CredTech · Imersão Jun 2026</div>
+    <div class="fb">Gigantes do Consignado</div>
+  </div>
+
+</div>
+</body>
+</html>
